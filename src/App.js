@@ -1,42 +1,35 @@
 import './App.css'
-import Form from './Components/Form';
-import React, {useState} from 'react';
+import Footer from './Component/Footer';
+import Home from './Component/Home';
+import Men from './Component/Men';
+import Navbar from './Component/Navbar';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Women from './Component/Women';
+import Kids from './Component/Kids';
+import Contact from './Component/Contact';
+import LoginForm from './Component/LoginForm';
+import Signin from './Component/Signin';
+import PageNotFound from './Component/PageNotFound';
 
 function App() {
-  const [form, setForm] = useState(true)
-  const [msg, setMsg] = useState('')
-cl
-  //Login form
-  function handleForm(){
-    if(form==false){
-      setForm(true)
-      setMsg('Login form shows successfully')
-    }
-  }
-
-  //Registration form
-  function handleForm1(){
-    if(form==true){
-      setForm(false)
-      setMsg('Registration form shows successfully')
-    }
-  }
-  return (
-     <>
-     
-    <div className='container d-flex justify-content-evenly'>
-      <div className='mt-5'>
-        <button onClick={handleForm} className='btn btn-success mx-4 px-4'>Click for Login form</button>
-        <button onClick={handleForm1} className='btn btn-primary'>Click for Registeration form</button>
-        <h4 className='mt-5 pt-5 ms-4 text-primary'>{msg}</h4>
-      </div>
-      <div>
-        <Form form={form}/>
-      </div>
-    </div>
-    
-     </>
-  )
+ return(
+  <>
+  <Router>
+  <Navbar/>
+  <Routes>
+    <Route exact path='/' element={<Home />}/>
+    <Route exact path='/men' element={<Men />}/>
+    <Route exact path='/women' element={<Women />}/>
+    <Route exact path='/kids' element={<Kids />}/>
+    <Route exact path='/contact' element={<Contact />}/>
+    <Route exact path='/login' element={<LoginForm />}/>
+    <Route exact path='/signin' element={<Signin />}/>
+    <Route path='*' element={<PageNotFound/>}/>
+  </Routes>
+  <Footer/>
+  </Router>
+  </>
+ )
 }
 
 export default App;
