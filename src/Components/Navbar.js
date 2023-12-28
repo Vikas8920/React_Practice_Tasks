@@ -10,7 +10,7 @@ export default function Navbar() {
             <Link to="/home" className='nav-link text-dark fw-bolder fs-4'>Home</Link>
             </li>
             <li className='list-group-item'>
-            <Link to="/users" className='nav-link text-dark fw-bolder fs-4'>Users</Link>
+            <Link to="/users" className='nav-link text-dark fw-bolder fs-4'>Products</Link>
             </li>
         </ul>
    </div>
