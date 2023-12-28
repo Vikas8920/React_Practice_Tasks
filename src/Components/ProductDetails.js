@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Card from './Card'
 
-export default class UserDetails extends Component {
+export default class ProductDetails extends Component {
     constructor(props){
         super(props)
         this.state={
@@ -16,7 +16,7 @@ export default class UserDetails extends Component {
     return (
       <>
        <div className="container mt-3">
-        <h1 className='text-center mb-3'>User Details</h1>
+        <h1 className='text-center mb-3'>Product Details</h1>
         {(this.state.data!=null)?<div className="row">
             <div className="col-md-6 pt-1">
                 <img src={this.state.data.thumbnail} alt="" style={{width:'550px', height:'350px'}} className='rounded-1' />
