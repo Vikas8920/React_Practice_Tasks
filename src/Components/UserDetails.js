@@ -1,36 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-const UserDetails = () => {
-  const { userId } = useParams();
-  const [userDetails, setUserDetails] = useState(null);
-
-
-  useEffect(()=>{
-    fetch(`https://dummyjson.com/users/${userId}`).then(response=>response.json()).then(data=>{setUserDetails(data)})
-  },[userId])
-
+const UserDetails = ({user}) => {
   return (
-    <div className="container mt-3">
-      {userDetails ? (
-        <div className='row mt-3'>
-          <h2 className='text-center mb-5'>User Details</h2>
-          <div className="col-md-6 border border-1 border-black rounded-1 d-flex justify-content-center align-items-center p-4">
-            <img src={userDetails.image} alt="" width={'200px'}/>
-          </div>
-          <div className="col-md-6 border border-1 border-black rounded-1 p-4 pt-5">
-          <h5 className="card-title"><strong>Full Name:</strong> {userDetails.firstName+' '+userDetails.lastName}</h5>
-          <h5 className="card-title"><strong>Email:</strong> {userDetails.email}</h5>
-          <h5 className="card-title"><strong>Age:</strong> {userDetails.age}</h5>
-          <h5 className="card-title"><strong>Gender:</strong> {userDetails.gender}</h5>
-          <h5 className="card-title"><strong>DOB:</strong> {userDetails.birthDate}</h5>
-          </div>
+    <>
+        {(user != null) ?
+        <div className='w-75 border ps-5 pb-5 rounded'>
+          <h4 className='ms-5 pt-4 ps-5 mb-4'>User Details</h4>
+          <img className="mb-2" src={user.image} width={100} />
+          <p className='mb-1'><strong>Full Name:</strong> {user.firstName + ' ' + user.lastName}</p>
+          <p className='mb-1'><strong>Email:</strong> {user.email}</p>
+          <p className='mb-1'><strong>Tel:</strong> {user.phone}</p>
+          <p className='mb-1'><strong>Gender:</strong> {user.gender.charAt(0).toUpperCase()+user.gender.slice(1)}</p>
+          <p className='mb-1'><strong>Age:</strong> {user.age + ' Years old'}</p>
+          <p className='mb-1'><strong>Username:</strong> {user.username.charAt(0).toUpperCase()+user.username.slice(1)}</p>
+          <p className='mb-1'><strong>Password:</strong> {user.password}</p>
+          <p className='mb-1'><strong>Address:</strong> {user.address.address + ', ' + user.address.city}</p>
         </div>
-      ) : (
-        <div className='display-4'>Loading user details...</div>
-      )}
-    </div>
-  );
-};
+        :''}
+    </>
+  )
+}
 
-export default UserDetails;
+export default UserDetails
