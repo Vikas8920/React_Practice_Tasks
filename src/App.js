@@ -18,7 +18,7 @@ const App = () => {
       <Routes>
         <Route path='/home' element={<Home/>}/>
         <Route path='/products' element={<ProductList addToCart={addToCart}/>}/>
-        <Route path='/cart' element={<Cart cart={cart}/>}/>
+        <Route path='/cart' element={(cart.length!=0)?<Cart cart={cart}/>:<div className='display-5 text-center mt-5'>Add items in your Cart</div>}/>
       </Routes>
     </Router>
   );
