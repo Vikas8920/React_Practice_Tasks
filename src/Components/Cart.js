@@ -17,9 +17,9 @@ const Cart = ({ cart }) => {
                     </tr>
                 </thead>
                 <tbody>
-                {cart.map(item => (
+                {cart.map((item,index) => (
                     <tr key={item.id}>
-                      <td className='ps-3 pt-2'>{item.id}</td>
+                      <td className='ps-3 pt-2'>{index+1}</td>
                       <td className='ps-4'><img src={item.thumbnail} alt="" width={'60px'} height={'30spx'}/></td>
                       <td className='ps-4 pt-2'>{item.title}</td>
                       <td>$ {item.price}</td>
